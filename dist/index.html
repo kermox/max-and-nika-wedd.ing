@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Wiggly Squiggly</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app">
+	<svg id="stage" width="200" height="200" xmlns="http://www.w3.org/2000/svg"></svg>	
+</div>
+
+<div class="contact-us">
+  <form id="celebrationForm">
+    <h2>Are You Joining the Celebration?</h2>
+    <div class="button-group">
+      <button type="button" class="celebration-btn yes">Yes, can't wait!</button>
+      <button type="button" id="runaway-btn" class="celebration-btn no">Sorry, I can't make it</button>
+    </div>
+  </form>
+</div>
+
+<!-- partial -->
+<script src='https://codepen.io/ste-vg/pen/zBVaZw.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.min.js'></script>
+<script src="./script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('runaway-btn');
+    const form = document.querySelector('.contact-us');
+    let attempts = 0;
+    
+    function getRandomPosition() {
+        const buttonRect = button.getBoundingClientRect();
+        const formRect = form.getBoundingClientRect();
+        const padding = 20;
+
+        // Calculate the maximum distance the button can move
+        const maxX = formRect.width - buttonRect.width - padding;
+        const maxY = formRect.height - buttonRect.height - padding;
+        
+        // Generate random positions with much wider range
+        const randomX = (Math.random() - 0.5) * maxX * 1.5; // 1.5x wider range
+        const randomY = (Math.random() - 0.5) * maxY * 1.5; // 1.5x wider range
+        
+        // Ensure button stays within form boundaries
+        return {
+            x: Math.max(padding, Math.min(maxX - padding, maxX/2 + randomX)),
+            y: Math.max(padding, Math.min(maxY - padding, maxY/2 + randomY))
+        };
+    }
+
+    function moveButton() {
+        if (attempts < 3) {
+            button.classList.add('running');
+            const pos = getRandomPosition();
+            button.style.left = `${pos.x}px`;
+            button.style.top = `${pos.y}px`;
+            attempts++;
+        }
+    }
+
+    button.addEventListener('mouseover', moveButton);
+    button.addEventListener('click', moveButton);
+});
+</script>
+
+</body>
+</html>
