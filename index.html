@@ -6,7 +6,9 @@
   <title>Max & Nika Wedding</title>
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./style.css">
-  <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -18,8 +20,6 @@
   <div class="wavy-border"></div>
   <div class="wavy-border-secondary"></div>
   <form id="langSelectForm">
-    <h2>Welcome to our Wedding</h2>
-    
     <div class="language-selector">
       <button type="button" class="btn-component language-btn" data-lang="pl">PL</button>
       <button type="button" class="btn-component language-btn" data-lang="ua">UA</button>
@@ -137,6 +137,7 @@
   </form>
 </div>
 
+<!-- Allergies Form -->
 <div class="contact-us" id="allergiesForm" style="display: none;">
   <div class="wavy-border"></div>
   <div class="wavy-border-secondary"></div>
@@ -146,8 +147,23 @@
     <label for="allergies" class="form-label" data-translate="allergies.label"></label>
   </div>
   <div class="form-buttons">
+    <button type="button" class="btn-component form-btn continue" data-translate="allergies.continueButton"></button>
     <button type="button" class="btn-component nav-btn back" data-translate="allergies.backButton"></button>
-    <button type="button" class="btn-component form-btn submit" data-translate="allergies.submitButton"></button>
+  </div>
+</div>
+
+<!-- Questions Form -->
+<div class="contact-us" id="questionsForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <h2 data-translate="questions.heading"></h2>
+  <div class="form-group">
+    <textarea id="questions" class="form-input" rows="4" required></textarea>
+    <label for="questions" class="form-label" data-translate="questions.label"></label>
+  </div>
+  <div class="form-buttons">
+    <button type="button" class="btn-component form-btn submit" data-translate="questions.submitButton"></button>
+    <button type="button" class="btn-component nav-btn back" data-translate="questions.backButton"></button>
   </div>
 </div>
 
@@ -164,8 +180,8 @@
   <div class="modal-content">
     <h3 data-translate="modal.heading">Submit your response?</h3>
     <div class="form-buttons">
-      <button type="button" class="btn-component nav-btn back" data-translate="modal.cancelButton">Cancel</button>
       <button type="button" class="btn-component nav-btn submit" data-translate="modal.confirmButton">Submit</button>
+      <button type="button" class="btn-component nav-btn back" data-translate="modal.cancelButton">Cancel</button>
     </div>
   </div>
 </div>
@@ -223,25 +239,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const translations = {
         "en": {
             "userInfo": {
-                "heading": "Please introduce yourself!",
+                "heading": "Please introduce Yourself!",
                 "nameLabel": "Your first and last name",
                 "continueButton": "Continue",
                 "backButton": "Back"
             },
             "rsvp": {
-                "heading": "Are you joining the celebration?",
+                "heading": "Are You joining the celebration?",
                 "yesButton": "Yes, can't wait!",
-                "noButton": "Sorry, I can't make it",
+                "noButton": "Sorry, I can't make it :(",
                 "backButton": "Back"
             },
             "attendees": {
-                "heading": "How many of you will be attending?",
+                "heading": "How many of You will be attending?",
                 "inputLabel": "Number of people",
                 "continueButton": "Continue",
                 "backButton": "Back"
             },
             "transport": {
-                "heading": "We have arranged transport so you can celebrate without limitations - should we reserve a spot for you?",
+                "heading": "We have arranged transport so You can celebrate without limitations - should we reserve a spot for You?",
                 "options": [
                     "Yes, both ways",
                     "Yes, only to the venue",
@@ -251,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "backButton": "Back"
             },
             "accommodation": {
-                "heading": "Would you like to use our accommodation?",
+                "heading": "Would You like to use our accommodation?",
                 "options": [
                     "Yes, I would like a single room",
                     "Yes, I would like a double room",
@@ -261,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "backButton": "Back"
             },
             "food": {
-                "heading": "What are your food preferences?",
+                "heading": "What are Your food preferences?",
                 "options": [
                     "I like meat!",
                     "Only vegetarian!",
@@ -276,16 +292,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 "continueButton": "Continue",
                 "backButton": "Back"
             },
+            "questions": {
+                "heading": "Do You have any questions for us?",
+                "label": "Your questions",
+                "submitButton": "Submit",
+                "backButton": "Back"
+            },
             "thankYou": {
-                "yes": "Thank you! We look forward to celebrating with you! <3",
-                "no": "Thank you for letting us know. We will miss you!",
+                "yes": "Thank you! We look forward to celebrating with you! It's only:",
+                "no": "Thank you for letting us know. We will miss You!",
                 "backButton": "Back",
-                "submitButton": "Submit form"
+                "submitButton": "Submit form",
+                "reminder": "Remember to check this page in september for updates as the wedding day approaches!"
             },
             "modal": {
-                "heading": "Submit your response?",
+                "heading": "Submit Your response?",
                 "confirmButton": "Submit",
                 "cancelButton": "Cancel"
+            },
+            "countdown": {
+                "title": "Time until our wedding:",
+                "days": "Days",
+                "hours": "Hours",
+                "minutes": "Minutes",
+                "seconds": "Seconds"
             }
         },
         "pl": {
@@ -298,17 +328,17 @@ document.addEventListener('DOMContentLoaded', function() {
             "rsvp": {
                 "heading": "Czy dołączysz do świętowania?",
                 "yesButton": "Tak, nie mogę się doczekać!",
-                "noButton": "Przepraszam, nie mogę przyjść",
+                "noButton": "Przepraszam, nie mogę przyjść.",
                 "backButton": "Wstecz"
             },
             "attendees": {
-                "heading": "Ilu was będzie?",
+                "heading": "Ilu Was będzie?",
                 "inputLabel": "Liczba osób",
                 "continueButton": "Dalej",
                 "backButton": "Wróć"
             },
             "transport": {
-                "heading": "Zorganizowaliśmy transport, żebyście mogli świętować razem z nami, bez ograniczeń - czy rezerwować dla Ciebie miejsce?",
+                "heading": "Zorganizowaliśmy transport, żebyście mogli świętować razem z nami bez ograniczeń - czy rezerwować dla Ciebie miejsce?",
                 "options": [
                     "Tak, w obydwie strony",
                     "Tak, tylko w jedną stronę",
@@ -328,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "backButton": "Wróć"
             },
             "food": {
-                "heading": "Jakie są twoje preferencje co do jedzenia?",
+                "heading": "Jakie są Twoje preferencje co do jedzenia?",
                 "options": [
                     "Lubię mięso!",
                     "Tylko wege!",
@@ -343,16 +373,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 "continueButton": "Dalej",
                 "backButton": "Wstecz"
             },
+            "questions": {
+                "heading": "Czy masz do nas jakieś pytania?",
+                "label": "Twoje pytania",
+                "submitButton": "Wyślij",
+                "backButton": "Wstecz"
+            },
             "thankYou": {
-                "yes": "Dziękujemy! Nie możemy się doczekać świętowania z Tobą!",
+                "yes": "Dziękujemy! Nie możemy się doczekać świętowania z Tobą! Zostało jeszcze tylko:",
                 "no": "Dziękujemy za informację. Będzie nam Ciebie brakować!",
                 "backButton": "Wstecz",
-                "submitButton": "Wyślij formularz"
+                "submitButton": "Wyślij formularz",
+                "reminder": "Pamiętaj, żeby sprawdzić tę stronę na początku września! Będziemy umieszczać na niej wszystkie aktualizacje."
             },
             "modal": {
                 "heading": "Wysłać odpowiedź?",
                 "confirmButton": "Wyślij",
                 "cancelButton": "Anuluj"
+            },
+            "countdown": {
+                "days": "Dni",
+                "hours": "Godzin",
+                "minutes": "Minut",
+                "seconds": "Sekund"
             }
         },
         "ua": {
@@ -365,17 +408,17 @@ document.addEventListener('DOMContentLoaded', function() {
             "rsvp": {
                 "heading": "Чи приєднаєшся до святкування?",
                 "yesButton": "Так, не можу дочекатися!",
-                "noButton": "Вибач, я не зможу прийти",
+                "noButton": "Вибач, я не зможу приїхати :(",
                 "backButton": "Назад"
             },
             "attendees": {
-                "heading": "Скільки вас буде?",
+                "heading": "Скільки Вас буде?",
                 "inputLabel": "Кількість осіб",
                 "continueButton": "Продовжити",
                 "backButton": "Назад"
             },
             "transport": {
-                "heading": "Ми організували транспорт, щоб ви могли святкувати без обмежень - чи забронювати для вас місце?",
+                "heading": "Ми організували транспорт, щоб Ви могли святкувати без обмежень - чи забронювати для вас місце?",
                 "options": [
                     "Так, в обидві сторони",
                     "Так, тільки до місця проведення церемонії",
@@ -395,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "backButton": "Назад"
             },
             "food": {
-                "heading": "Які твої харчові вподобання?",
+                "heading": "Які Твої харчові вподобання?",
                 "options": [
                     "Я люблю м'ясо!",
                     "Тільки вегетаріанське!",
@@ -404,22 +447,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 "backButton": "Назад"
             },
             "allergies": {
-                "heading": "Чи є у тебе алергія?",
+                "heading": "Чи є у Тебе алергія?",
                 "label": "Аллергії/Обмеження",
-                "submitButton": "Відправити",
+                "submitButton": "Надіслати",
                 "continueButton": "Далі",
                 "backButton": "Назад"
             },
+            "questions": {
+                "heading": "Чи є у Тебе питання до нас?",
+                "label": "Твої питання",
+                "submitButton": "Надіслати",
+                "backButton": "Назад"
+            },
             "thankYou": {
-                "yes": "Дякуємо! Ми з нетерпінням чекаємо на святкування з вами!",
-                "no": "Дякуємо за інформацію. Нам буде вас не вистачати!",
+                "yes": "Дякуємо! Ми з нетерпінням чекаємо на святкування з Вами! Лишилось всього:",
+                "no": "Дякуємо за інформацію. Нам буде Вас не вистачати!",
                 "backButton": "Назад",
-                "submitButton": "Надіслати форму"
+                "submitButton": "Надіслати форму",
+                "reminder": "Не забувайте перевіряти цю сторінку на початку вересня. Ми будемо оновлювати її з усіма новинами."
             },
             "modal": {
                 "heading": "Надіслати відповідь?",
                 "confirmButton": "Надіслати",
                 "cancelButton": "Скасувати"
+            },
+            "countdown": {
+                "days": "Дні",
+                "hours": "Години",
+                "minutes": "Хвилини",
+                "seconds": "Секунди"
             }
         }
     };
@@ -483,6 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
         accommodation: null,
         food: null,
         allergies: null,
+        questions: null,
         
         // Update state and store in session
         updateState: function(key, value) {
@@ -502,6 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 accommodation: this.accommodation,
                 food: this.food,
                 allergies: this.allergies,
+                questions: this.questions,
                 currentStep: this.currentStep
             }));
         },
@@ -519,6 +577,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.accommodation = parsedState.accommodation || null;
                 this.food = parsedState.food || null;
                 this.allergies = parsedState.allergies || null;
+                this.questions = parsedState.questions || null;
                 this.currentStep = parsedState.currentStep || 'language';
             }
         },
@@ -535,6 +594,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     accommodation: this.accommodation,
                     food: this.food,
                     allergies: this.allergies,
+                    questions: this.questions,
                     timestamp: new Date()
                 });
             }
@@ -570,6 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('accommodationForm').style.display = 'none';
             document.getElementById('foodForm').style.display = 'none';
             document.getElementById('allergiesForm').style.display = 'none';
+            document.getElementById('questionsForm').style.display = 'none';
             document.getElementById('thankYouForm').style.display = 'none';
             
             // Reset all wave animations to ensure they're consistent
@@ -613,6 +674,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('allergiesForm').style.display = 'block';
                     updateDetailsForm(this.language, 'allergies');
                     populateAllergiesField();
+                    break;
+                case 'questions':
+                    document.getElementById('questionsForm').style.display = 'block';
+                    updateDetailsForm(this.language, 'questions');
+                    populateQuestionsField();
                     break;
                 case 'thankYou':
                     document.getElementById('thankYouForm').style.display = 'block';
@@ -674,7 +740,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Different messages based on response
         if (response === 'No') {
-            thankYouContent.innerHTML = `<h2>${getTranslation(language, 'thankYou', 'no')}</h2>`;
+            thankYouContent.innerHTML = `
+                <h2>${getTranslation(language, 'thankYou', 'no')}</h2>
+                <div class="gif-container">
+                    <img src="cupiman_agadkqad5kdobw.gif" alt="Sad cupid" class="response-gif">
+                </div>
+            `;
             
             // Disable squiggle animations only for "No" responses
             window.disableSquiggles = true;
@@ -692,7 +763,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Cursor animations disabled on "We will miss you" screen');
             }
         } else {
-            thankYouContent.innerHTML = `<h2>${getTranslation(language, 'thankYou', 'yes')}</h2>`;
+            thankYouContent.innerHTML = `
+                <h2>${getTranslation(language, 'thankYou', 'yes')}</h2>
+                <div class="countdown-container">
+                    <div id="wedding-countdown"></div>
+                </div>
+                <div class="reminder-note">
+                    ${getTranslation(language, 'thankYou', 'reminder')}
+                </div>
+            `;
+            
+            // Initialize countdown
+            initializeCountdown();
             
             // Make sure squiggles are enabled for the "Thank you" screen
             window.disableSquiggles = false;
@@ -700,6 +782,159 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Cursor animations enabled on "Thank you" screen');
         }
     }
+
+    // Countdown timer functionality
+    function CountdownTracker(label, value) {
+        var el = document.createElement('span');
+
+        el.className = 'flip-clock__piece';
+        el.innerHTML = '<b class="flip-clock__card card"><b class="card__top"></b><b class="card__bottom"></b><b class="card__back"><b class="card__bottom"></b></b></b>' + 
+            '<span class="flip-clock__slot">' + label + '</span>';
+
+        this.el = el;
+
+        var top = el.querySelector('.card__top'),
+            bottom = el.querySelector('.card__bottom'),
+            back = el.querySelector('.card__back'),
+            backBottom = el.querySelector('.card__back .card__bottom');
+
+        this.update = function(val) {
+            // Format the value based on the label type
+            if (label === getTranslation(formState.language, 'countdown', 'days')) {
+                // For days, allow 3 digits with no leading zeros
+                val = String(val);
+            } else {
+                // For hours, minutes, seconds, keep 2 digits with leading zero
+                val = ('0' + val).slice(-2);
+            }
+            
+            if (val !== this.currentValue) {
+                if (this.currentValue >= 0) {
+                    back.setAttribute('data-value', this.currentValue);
+                    bottom.setAttribute('data-value', this.currentValue);
+                }
+                this.currentValue = val;
+                top.innerText = this.currentValue;
+                backBottom.setAttribute('data-value', this.currentValue);
+
+                this.el.classList.remove('flip');
+                void this.el.offsetWidth;
+                this.el.classList.add('flip');
+            }
+        }
+        
+        this.update(value);
+    }
+
+    function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        return {
+            'Total': t,
+            'Days': Math.floor(t / (1000 * 60 * 60 * 24)),
+            'Hours': Math.floor((t / (1000 * 60 * 60)) % 24),
+            'Minutes': Math.floor((t / 1000 / 60) % 60),
+            'Seconds': Math.floor((t / 1000) % 60)
+        };
+    }
+
+    function Clock(countdown, callback) {
+        // Don't parse the date if it's already a Date object
+        countdown = countdown || false;
+        callback = callback || function(){};
+        
+        var updateFn = getTimeRemaining;
+
+        this.el = document.createElement('div');
+        this.el.className = 'flip-clock';
+
+        var trackers = {},
+            t = updateFn(countdown),
+            key, timeinterval;
+
+        for (key in t) {
+            if (key === 'Total') { continue; }
+            
+            // Translate the label based on the key
+            var translatedLabel;
+            if (key === 'Days') {
+                translatedLabel = getTranslation(formState.language, 'countdown', 'days');
+            } else if (key === 'Hours') {
+                translatedLabel = getTranslation(formState.language, 'countdown', 'hours');
+            } else if (key === 'Minutes') {
+                translatedLabel = getTranslation(formState.language, 'countdown', 'minutes');
+            } else if (key === 'Seconds') {
+                translatedLabel = getTranslation(formState.language, 'countdown', 'seconds');
+            } else {
+                translatedLabel = key;
+            }
+            
+            trackers[key] = new CountdownTracker(translatedLabel, t[key]);
+            this.el.appendChild(trackers[key].el);
+        }
+        
+        var i = 0;
+        function updateClock() {
+            timeinterval = requestAnimationFrame(updateClock);
+            
+            // throttle so it's not constantly updating the time.
+            if (i++ % 10) { return; }
+            
+            var t = updateFn(countdown);
+            if (t.Total < 0) {
+                cancelAnimationFrame(timeinterval);
+                for (key in trackers) {
+                    trackers[key].update(0);
+                }
+                callback();
+                return;
+            }
+            
+            for (key in trackers) {
+                trackers[key].update(t[key]);
+            }
+        }
+
+        setTimeout(updateClock, 500);
+    }
+
+    function initializeCountdown() {
+        // Polish timezone (Warsaw) is UTC+1 in winter and UTC+2 in summer (CEST)
+        // Wedding date: September 12, 2025 at 14:00 Polish time
+        
+        // Create date in Polish timezone
+        var weddingDate = new Date('2025-09-12T14:00:00+02:00'); // CEST (summer time)
+        
+        // Log crucial information for debugging
+        console.log("Today:", new Date().toLocaleString('en-US', { timeZone: 'Europe/Warsaw' }));
+        console.log("Wedding date:", weddingDate.toLocaleString('en-US', { timeZone: 'Europe/Warsaw' }));
+        console.log("Days difference:", Math.floor((weddingDate - new Date()) / (1000 * 60 * 60 * 24)));
+        
+        var countdown = new Clock(weddingDate, function(){ console.log('Wedding day has arrived!'); });
+        document.getElementById('wedding-countdown').appendChild(countdown.el);
+    }
+    
+    // Update translations to include countdown
+    translations.en.countdown = {
+        'title': 'Time until our wedding:',
+        'days': 'Days',
+        'hours': 'Hours',
+        'minutes': 'Minutes',
+        'seconds': 'Seconds'
+    };
+    translations.pl.countdown = {
+        'title': 'Czas do naszego ślubu:',
+        'days': 'Dni',
+        'hours': 'Godzin',
+        'minutes': 'Minut',
+        'seconds': 'Sekund'
+    };
+    translations.ua.countdown = {
+        'title': 'Час до нашого весілля:',
+        'days': 'Дні',
+        'hours': 'Години',
+        'minutes': 'Хвилини',
+        'seconds': 'Секунди'
+    };
 
     // Update celebration function to take optional count parameter and be mobile-aware
     function celebrateWithSquiggles(count) {
@@ -809,20 +1044,10 @@ document.addEventListener('DOMContentLoaded', function() {
         attempts = 0;
         isMoving = false;
         
-        // Reset event listeners
-        button.removeEventListener('mouseover', moveButton);
-        button.removeEventListener('touchstart', moveButton);
-        
-        // On mobile, use touchstart instead of mouseover
-        if (isMobile) {
-            button.addEventListener('touchstart', moveButton);
-        } else {
-            button.addEventListener('mouseover', moveButton);
-        }
-        
-        // Reset yes button position
+        // Reset yes button position completely
         yesButton.style.position = '';
         yesButton.style.left = '';
+        yesButton.style.transform = '';
     }
 
     function getRandomPosition() {
@@ -834,12 +1059,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxX = formRect.width - buttonRect.width - padding;
         const maxY = formRect.height - buttonRect.height - padding;
         
-        // Generate random positions with minimum movement distance
-        let randomX = (Math.random() - 0.5) * maxX * 4.0;
-        let randomY = (Math.random() - 0.5) * maxY * 4.0;
+        // Desktop behavior - move in all directions
+        // Generate random positions with increased multipliers for greater distance
+        let randomX = (Math.random() - 0.5) * maxX * 8.0; // Increased from 4.0 to 8.0
+        let randomY = (Math.random() - 0.5) * maxY * 8.0; // Increased from 4.0 to 8.0
         
-        // Ensure minimum movement distance (at least 30% of max)
-        const minDistance = 0.3;
+        // Ensure minimum movement distance (at least 70% of max - significantly increased)
+        const minDistance = 0.7; // Increased from 0.4 to 0.7
         if (Math.abs(randomX) < maxX * minDistance) {
             randomX = (randomX < 0 ? -1 : 1) * maxX * minDistance;
         }
@@ -855,6 +1081,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function moveButton(e) {
+        // Only allow runaway behavior on desktop
+        if (isMobile) {
+            return;
+        }
+        
         // Prevent default behavior for touch events
         if (e && e.type === 'touchstart') {
             e.preventDefault();
@@ -868,9 +1099,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ensure button is set to absolute positioning for movement
             button.style.position = 'absolute';
             
-            // When the blue button moves, make sure the orange button stays in position
+            // Center the Yes button precisely in the form
             yesButton.style.position = 'absolute';
-            yesButton.style.left = isMobile ? '0' : '25%';
+            yesButton.style.left = '50%';
+            yesButton.style.transform = 'translateX(-50%)';
             
             // Move only the blue button
             button.style.left = `${pos.x}px`;
@@ -885,7 +1117,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // After 4 attempts, remove event listeners so button stops running away
             if (attempts >= 4) {
                 button.removeEventListener('mouseover', moveButton);
-                button.removeEventListener('touchstart', moveButton);
                 // Keep the click listener for submission
             }
         }
@@ -905,25 +1136,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 800); // Give time for the celebration
     });
     
-    // No button click handler (separate from moveButton)
+    // Desktop: Add mouseover event to trigger runaway behavior
+    if (!isMobile) {
+        button.addEventListener('mouseover', moveButton);
+    }
+    
+    // For both mobile and desktop: Add click handler
     button.addEventListener('click', function(e) {
-        if (attempts >= 4) {
-            // Only submit after it's stopped running away
+        if (isMobile || attempts >= 4) {
+            // On mobile or after 4 attempts on desktop, submit the form
             formState.updateState('response', 'No');
-            formState.goToStep('thankYou');
+            showSubmitModal();
         } else {
-            // Otherwise run away
+            // On desktop before 4 attempts, run away
             moveButton(e);
         }
     });
-
-    // Set appropriate event listener based on device type
-    if (isMobile) {
-        button.addEventListener('touchstart', moveButton);
-    } else {
-        button.addEventListener('mouseover', moveButton);
-    }
-
+    
     // Function to restart wave animations
     function resetWaveAnimations() {
         const allWavyBorders = document.querySelectorAll('.wavy-border, .wavy-border-secondary');
@@ -1008,11 +1237,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 backButton: document.querySelector('#foodForm .nav-btn.back')
             },
             'allergies': {
-                form: document.getElementById('allergiesDetailsForm'),
                 heading: document.querySelector('#allergiesForm h2'),
                 allergiesLabel: document.querySelector('label[for="allergies"]'),
-                submitButton: document.querySelector('#allergiesForm .form-btn.submit'),
+                continueButton: document.querySelector('#allergiesForm .form-btn.continue'),
                 backButton: document.querySelector('#allergiesForm .nav-btn.back')
+            },
+            'questions': {
+                heading: document.querySelector('#questionsForm h2'),
+                questionsLabel: document.querySelector('label[for="questions"]'),
+                submitButton: document.querySelector('#questionsForm .form-btn.submit'),
+                backButton: document.querySelector('#questionsForm .nav-btn.back')
             }
         };
         
@@ -1044,11 +1278,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // For allergies form
         if (formType === 'allergies') {
             selectors.allergiesLabel.textContent = getTranslation(language, 'allergies', 'label');
-            selectors.submitButton.textContent = getTranslation(language, 'allergies', 'submitButton');
+            selectors.continueButton.textContent = getTranslation(language, 'allergies', 'continueButton');
+        }
+        
+        // For questions form
+        if (formType === 'questions') {
+            selectors.questionsLabel.textContent = getTranslation(language, 'questions', 'label');
+            selectors.submitButton.textContent = getTranslation(language, 'questions', 'submitButton');
         }
     }
     
-    // Function to populate attendees field
+    // Helper function to populate attendees field
     function populateAttendeesField() {
         if (formState.attendees) {
             document.getElementById('attendeesCount').value = formState.attendees;
@@ -1061,6 +1301,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (formState.allergies) {
             document.getElementById('allergies').value = formState.allergies;
             document.getElementById('allergies').classList.add('has-value');
+        }
+    }
+    
+    // Helper function to populate questions field
+    function populateQuestionsField() {
+        if (formState.questions) {
+            document.getElementById('questions').value = formState.questions;
+            document.getElementById('questions').classList.add('has-value');
         }
     }
     
@@ -1181,13 +1429,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Update the event handler for the allergies form
-    document.querySelector('#allergiesForm .form-btn.submit').addEventListener('click', function() {
+    document.querySelector('#allergiesForm .form-btn.continue').addEventListener('click', function() {
         // Save allergies to form state
         const allergiesValue = document.getElementById('allergies').value;
         formState.updateState('allergies', allergiesValue);
             
-        // Show the submit modal instead of navigating directly
+        // Continue to questions form
+        formState.goToStep('questions');
+    });
+    
+    // Event handler for questions form
+    document.querySelector('#questionsForm .form-btn.submit').addEventListener('click', function() {
+        // Save questions to form state
+        const questionsValue = document.getElementById('questions').value;
+        formState.updateState('questions', questionsValue);
+            
+        // Show the submit modal
         showSubmitModal();
+    });
+    
+    // Back button for questions form
+    document.querySelector('#questionsForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('allergies');
     });
     
     // Initialize form state function
@@ -1246,6 +1509,62 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+    
+    // Fix form submission behavior for Enter key
+    function addFormEnterKeyHandler(formId, submitButtonSelector) {
+        const form = document.getElementById(formId);
+        if (!form) return;
+        
+        form.addEventListener('keydown', function(e) {
+            // Check if Enter key was pressed
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                e.preventDefault(); // Prevent the default form submission
+                
+                // Find and click the continue/submit button
+                const submitButton = document.querySelector(submitButtonSelector);
+                if (submitButton) {
+                    submitButton.click();
+                }
+            }
+        });
+    }
+    
+    // Set up Enter key handlers for all forms
+    addFormEnterKeyHandler('nameForm', '#userInfoForm .form-btn.continue');
+    addFormEnterKeyHandler('attendeesDetailsForm', '#attendeesForm .form-btn.continue');
+    
+    // For forms without a continue button but with input fields
+    document.getElementById('allergies')?.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            const continueButton = document.querySelector('#allergiesForm .form-btn.continue');
+            if (continueButton) {
+                continueButton.click();
+            }
+        }
+    });
+    
+    // For questions textarea - only submit when Ctrl+Enter is pressed
+    document.getElementById('questions')?.addEventListener('keydown', function(e) {
+        if ((e.key === 'Enter' || e.keyCode === 13) && e.ctrlKey) {
+            e.preventDefault();
+            const submitButton = document.querySelector('#questionsForm .form-btn.submit');
+            if (submitButton) {
+                submitButton.click();
+            }
+        }
+    });
+    
+    // For the modal
+    document.getElementById('submitModal')?.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            const submitButton = document.querySelector('.modal .nav-btn.submit');
+            if (submitButton) {
+                submitButton.click();
+            }
+        }
+    });
 });
 </script>
 

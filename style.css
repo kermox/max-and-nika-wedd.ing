@@ -139,7 +139,7 @@ body {
 }
 
 .contact-us h2 {
-  font-family: 'Fjalla One';
+  font-family: 'Balsamiq Sans';
   text-align: center;
   margin-bottom: 30px;
   font-size: 24pt;
@@ -172,7 +172,7 @@ body {
   outline: none;
   border: 1px solid rgba(0,0,0,1);
   box-shadow: 3px 3px 1px 1px #9289C3, 3px 3px 1px 2px rgba(0,0,0,1);
-  font-family: 'Fjalla One';
+  font-family: 'Balsamiq Sans';
   font-size: 14pt;
   cursor: pointer;
   white-space: nowrap;
@@ -184,7 +184,7 @@ body {
 }
 
 .btn-component:hover {
-  background: #1A0974;
+  background: #FFB000;
   color: white;
   transform: translateY(-2px);
   box-shadow: 3px 5px 1px 1px #9289C3, 3px 5px 1px 2px rgba(0,0,0,1);
@@ -230,7 +230,7 @@ body {
   width: 100%;
   font-size: 14pt;
   line-height: 28pt;
-  font-family: 'Fjalla One';
+  font-family: 'Balsamiq Sans';
   margin-bottom: 28pt;
   border: none;
   border-bottom: 5px solid rgba(0,0,0,1);
@@ -256,12 +256,12 @@ body {
   outline: none;
   border: 1px solid rgba(0,0,0,1);
   box-shadow: 3px 3px 1px 1px #9289C3, 3px 3px 1px 2px rgba(0,0,0,1);
-  font-family: 'Fjalla One';
+  font-family: 'Balsamiq Sans';
   font-size: 14pt;
 }
 
 .contact-us button:hover {
-  background: #1A0974;
+  background: #FFB000;
   color: white;
   border: 1px solid rgba(0,0,0,1);
 }
@@ -284,6 +284,14 @@ body {
   position: absolute !important;
   z-index: 10;
   transition: all 0.1s ease-out;
+}
+
+/* Specific hover for runaway button */
+#runaway-btn:hover {
+  background: #1E0B73 !important;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 1px 1px #9289C3, 3px 5px 1px 2px rgba(0,0,0,1);
 }
 
 /* Create a placeholder for the runaway button */
@@ -363,8 +371,17 @@ body {
 }
 
 .nav-btn:hover {
-  background: #1A0974;
+  background: #FFB000;
   color: white;
+}
+
+/* Style specifically for back buttons */
+.nav-btn.back {
+  background: #9289C3;
+}
+
+.nav-btn.back:hover {
+  background: #FFB000;
 }
 
 /* Form styles */
@@ -380,7 +397,7 @@ body {
   width: 100%;
   font-size: 14pt;
   line-height: 28pt;
-  font-family: 'Fjalla One';
+  font-family: 'Balsamiq Sans';
   border: none;
   border-bottom: 3px solid rgba(0,0,0,0.7);
   background: transparent;
@@ -390,8 +407,29 @@ body {
   transition: all 0.3s ease-out;
 }
 
+/* Textarea specific styles */
+textarea.form-input {
+  resize: vertical;
+  min-height: 100px;
+  padding: 10px 5px;
+  line-height: 1.4;
+  border: 2px solid rgba(0,0,0,0.7);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Textarea placeholder styling */
+textarea.form-input::placeholder {
+  padding: 8px 0;
+  color: rgba(0,0,0,0.4);
+}
+
 .form-input:focus {
   border-bottom: 3px solid #FC336B;
+}
+
+textarea.form-input:focus {
+  border: 2px solid #FC336B;
 }
 
 /* Form label styling */
@@ -403,7 +441,7 @@ body {
   color: rgba(0,0,0,0.5);
   pointer-events: none;
   transition: all 0.3s ease-out;
-  font-family: 'Fjalla One';
+  font-family: 'Balsamiq Sans';
 }
 
 .form-input:focus + .form-label,
@@ -419,6 +457,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  gap: 20px;
 }
 
 /* Continue button */
@@ -467,16 +506,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-wrap: normal;
-  word-wrap: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   word-break: normal;
-  hyphens: none;
-  white-space: nowrap;
+  hyphens: auto;
+  white-space: normal;
+  padding: 10px 15px; /* Equal padding on both sides */
 }
 
 /* Style for selected button */
 .choice-btn.selected {
-  background: #1A0974;
+  background: #FFB000;
   color: white;
   transform: translateY(-2px);
   box-shadow: 3px 5px 1px 1px #9289C3, 3px 5px 1px 2px rgba(0,0,0,1);
@@ -486,9 +526,14 @@ body {
 .choice-btn.selected::after {
   content: "✓";
   position: absolute;
-  right: 15px;
-  font-size: 1.2rem;
-  color: white;
+  right: -30px; /* Move further from button */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem; /* Make bigger */
+  color: #FFB000; /* Match the button color */
+  line-height: 1;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5); /* Add shadow for visibility */
+  margin-left: 10px; /* Add left margin */
 }
 
 /* For two-choice layouts on larger screens */
@@ -565,7 +610,7 @@ body {
 }
 
 .modal h3 {
-  font-family: 'Fjalla One';
+  font-family: 'Balsamiq Sans';
   margin-bottom: 30px;
   font-size: 24pt;
   color: rgba(0,0,0,0.8);
@@ -584,6 +629,46 @@ body {
   min-width: 120px;
 }
 
+/* Style for the submit/send button in the modal */
+.modal .nav-btn.submit {
+  order: -1; /* Puts this button first in the flex container */
+  background: #FC336B; /* Keep pink color for submit */
+}
+
+/* Style for the cancel button in the modal */
+.modal .nav-btn.back {
+  background: #9289C3; /* Change to blue color */
+}
+
+/* Hover effects for modal buttons */
+.modal .nav-btn.submit:hover,
+.modal .nav-btn.back:hover {
+  background: #FFB000;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 3px 5px 1px 1px #9289C3, 3px 5px 1px 2px rgba(0,0,0,1);
+}
+
+/* Desktop style for form buttons */
+@media (min-width: 769px) {
+  .form-buttons {
+    display: flex;
+    justify-content: space-between; /* Space between to push items to edges */
+    margin-top: 40px;
+    gap: 20px;
+  }
+
+  #allergiesForm .form-buttons .nav-btn.back,
+  #questionsForm .form-buttons .nav-btn.back {
+    order: -1; /* Put back buttons first/left on desktop */
+  }
+
+  #allergiesForm .form-buttons .form-btn.continue,
+  #questionsForm .form-buttons .form-btn.submit {
+    order: 1; /* Put continue/submit buttons second/right on desktop */
+  }
+}
+
 @media (max-width: 768px) {
   html, body {
     overflow-x: hidden;
@@ -600,10 +685,10 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 30px 20px;
-    min-width: 280px;
-    width: 85%;
-    max-width: 85%;
+    padding: 35px 25px; /* Increased padding */
+    min-width: 290px; /* Slightly wider minimum */
+    width: 90%; /* Increased from 85% */
+    max-width: 90%; /* Increased from 85% */
     transform: translate(-50%, -50%);
     margin-bottom: 0;
     border-radius: 20px;
@@ -667,6 +752,33 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    width: 100%;
+  }
+  
+  /* Stronger selectors to ensure these rules are applied on mobile */
+  .form-buttons .form-btn.continue,
+  .form-buttons .form-btn.submit,
+  #userInfoForm .form-buttons .form-btn.continue,
+  #rsvpForm .form-buttons .form-btn.continue,
+  #attendeesForm .form-buttons .form-btn.continue,
+  #transportForm .form-buttons .form-btn.continue,
+  #accommodationForm .form-buttons .form-btn.continue,
+  #foodForm .form-buttons .form-btn.continue,
+  #allergiesForm .form-buttons .form-btn.continue,
+  #questionsForm .form-buttons .form-btn.submit {
+    order: -1 !important; /* Force continue/submit buttons first on mobile */
+  }
+  
+  .form-buttons .nav-btn.back,
+  #userInfoForm .form-buttons .nav-btn.back,
+  #rsvpForm .form-buttons .nav-btn.back,
+  #attendeesForm .form-buttons .nav-btn.back,
+  #transportForm .form-buttons .nav-btn.back,
+  #accommodationForm .form-buttons .nav-btn.back,
+  #foodForm .form-buttons .nav-btn.back,
+  #allergiesForm .form-buttons .nav-btn.back,
+  #questionsForm .form-buttons .nav-btn.back {
+    order: 1 !important; /* Force back buttons last on mobile */
   }
   
   .form-navigation {
@@ -708,15 +820,21 @@ body {
     width: 100%;
     max-width: 100%;
     white-space: normal;
-    padding: 10px 15px;
+    padding: 12px 20px; /* Increased padding */
     height: auto;
-    min-height: 50px;
-    font-size: 12pt;
+    min-height: 60px; /* Taller buttons */
+    font-size: 14pt; /* Larger text */
+    margin-bottom: 10px; /* Add space between buttons */
+  }
+  
+  .choice-btn.selected::after {
+    right: -35px; /* Increased distance from button */
+    font-size: 1.5rem; /* Larger checkmark */
   }
   
   .choice-buttons {
     width: 100%;
-    gap: 20px;
+    gap: 30px; /* Increased gap between buttons */
   }
   
   .choice-buttons.two-choices {
@@ -744,6 +862,32 @@ body {
   
   .modal-content {
     padding: 25px 20px;
+  }
+  
+  /* Specific ordering for allergies form */
+  #allergiesForm .form-buttons {
+    flex-direction: column;
+  }
+  
+  #allergiesForm .form-buttons .form-btn.continue {
+    order: -1; /* Show continue button first */
+  }
+  
+  #allergiesForm .form-buttons .nav-btn.back {
+    order: 1; /* Show back button second/last */
+  }
+  
+  /* Specific ordering for questions form */
+  #questionsForm .form-buttons {
+    flex-direction: column;
+  }
+  
+  #questionsForm .form-buttons .form-btn.submit {
+    order: -1; /* Show submit button first */
+  }
+  
+  #questionsForm .form-buttons .nav-btn.back {
+    order: 1; /* Show back button second/last */
   }
 }
 
@@ -776,8 +920,18 @@ body {
   }
   
   .choice-btn {
-    font-size: 11pt;
-    min-height: 45px;
+    font-size: 13pt; /* Still larger than before */
+    min-height: 55px; /* Still taller than before */
+    padding: 12px 15px; /* More padding than before */
+  }
+  
+  .choice-btn.selected::after {
+    right: -28px; /* Still more distance than original */
+    font-size: 1.3rem; /* Still larger than original */
+  }
+  
+  .choice-buttons {
+    gap: 25px; /* Still more gap than original */
   }
 }
 
@@ -829,5 +983,220 @@ body {
   
   .choice-buttons {
     gap: 8px;
+  }
+}
+
+/* Styling for the cupiman gif on thank you page */
+.gif-container {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+.response-gif {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+@media (max-width: 768px) {
+  .response-gif {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
+
+/* Countdown timer styling */
+.countdown-container {
+  margin: 40px auto 20px;
+  text-align: center;
+}
+
+.countdown-title {
+  font-family: 'Balsamiq Sans';
+  color: rgba(0,0,0,0.8);
+  margin-bottom: 20px;
+  font-size: 18pt;
+}
+
+.flip-clock {
+  text-align: center;
+  perspective: 400px;
+  margin: 20px auto;
+}
+
+.flip-clock *,
+.flip-clock *:before,
+.flip-clock *:after { 
+  box-sizing: border-box; 
+}
+
+.flip-clock__piece {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.flip-clock__slot {
+  font-family: 'Balsamiq Sans';
+  font-size: 1.2rem;
+  color: rgba(0,0,0,0.8);
+  margin-top: 10px;
+  display: block;
+}
+
+.card {
+  display: block;
+  position: relative; 
+  padding-bottom: 0.72em;
+  font-size: 5rem;
+  line-height: 0.95;
+}
+
+.card__top,
+.card__bottom,
+.card__back::before,
+.card__back::after {
+  display: block;
+  height: 0.72em;
+  color: #f0f0f0; /* Slightly darker white */
+  background: #D68F00; /* Brighter than before but still darker than the bottom */
+  padding: 0.25em 0.25em;
+  border-radius: 0.15em 0.15em 0 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  width: 1.8em;
+  transform: translateZ(0);
+  font-family: 'Balsamiq Sans';
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+/* Special styling for days to accommodate 3 digits */
+.flip-clock__piece:nth-child(1) .card__top,
+.flip-clock__piece:nth-child(1) .card__bottom,
+.flip-clock__piece:nth-child(1) .card__back::before,
+.flip-clock__piece:nth-child(1) .card__back::after {
+  width: 3em; /* Wider for days */
+}
+
+.card__bottom {
+  color: #fff; /* Keep bottom text bright white */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-top: solid 1px rgba(0,0,0,0.2);
+  background: #FFB000; /* Golden amber as requested */
+  border-radius: 0 0 0.15em 0.15em; 
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.card__bottom::after {
+  display: block;
+  margin-top: -0.72em;
+}
+
+.card__back::before,
+.card__bottom::after {
+  content: attr(data-value);
+}
+
+.card__back {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0%;
+  pointer-events: none;
+}
+
+.card__back::before {
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.flip .card__back::before {
+  animation: flipTop 0.3s cubic-bezier(.37,.01,.94,.35);
+  animation-fill-mode: both;
+  transform-origin: center bottom;
+}
+
+.flip .card__back .card__bottom {
+  transform-origin: center top;
+  animation-fill-mode: both;
+  animation: flipBottom 0.6s cubic-bezier(.15,.45,.28,1);
+}
+
+@keyframes flipTop {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 2;
+  }
+  0%, 99% {
+    opacity: 0.99;
+  }
+  100% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flipBottom {
+  0%, 50% {
+    z-index: -1;
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  51% {
+    opacity: 0.99;
+  }
+  100% {
+    opacity: 0.99;
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+}
+
+/* Mobile adjustments for countdown */
+@media (max-width: 768px) {
+  .card {
+    font-size: 3.5rem;
+  }
+  
+  .flip-clock__slot {
+    font-size: 0.9rem;
+  }
+  
+  .flip-clock__piece {
+    margin: 0 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    font-size: 2.5rem;
+  }
+  
+  .flip-clock__slot {
+    font-size: 0.8rem;
+  }
+}
+
+/* Styling for the reminder note */
+.reminder-note {
+  font-family: 'Balsamiq Sans';
+  text-align: center;
+  margin: 25px auto 10px;
+  font-size: 14pt;
+  color: rgba(0,0,0,0.7);
+  max-width: 90%;
+  padding: 15px;
+  background-color: rgba(255, 176, 0, 0.1);
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .reminder-note {
+    font-size: 12pt;
+    margin: 20px auto 5px;
+    padding: 12px;
   }
 }
