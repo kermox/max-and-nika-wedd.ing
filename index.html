@@ -969,10 +969,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Language selection handling
     const languageButtons = document.querySelectorAll('.language-btn');
     languageButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        // Function to handle language selection
+        const handleLanguageSelection = function() {
             const selectedLanguage = this.getAttribute('data-lang');
             formState.updateState('language', selectedLanguage);
             formState.goToStep('userInfo');
+        };
+        
+        // Add both click and touchstart event listeners
+        button.addEventListener('click', handleLanguageSelection);
+        button.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Prevent double-firing with click event
+            handleLanguageSelection.call(this);
         });
     });
     
