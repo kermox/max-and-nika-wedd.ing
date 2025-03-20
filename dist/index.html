@@ -2,7 +2,9 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Wiggly Squiggly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Max & Nika Wedding</title>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./style.css">
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
 </head>
@@ -12,28 +14,817 @@
 	<svg id="stage" width="200" height="200" xmlns="http://www.w3.org/2000/svg"></svg>	
 </div>
 
-<div class="contact-us">
-  <form id="celebrationForm">
-    <h2>Are You Joining the Celebration?</h2>
-    <div class="button-group">
-      <button type="button" class="celebration-btn yes">Yes, can't wait!</button>
-      <button type="button" id="runaway-btn" class="celebration-btn no">Sorry, I can't make it</button>
+<div class="contact-us" id="languageForm">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <form id="langSelectForm">
+    <h2>Welcome to our Wedding</h2>
+    
+    <div class="language-selector">
+      <button type="button" class="btn-component language-btn" data-lang="pl">PL</button>
+      <button type="button" class="btn-component language-btn" data-lang="ua">UA</button>
+      <button type="button" class="btn-component language-btn" data-lang="en">EN</button>
     </div>
   </form>
 </div>
 
+<div class="contact-us" id="userInfoForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <form id="nameForm">
+    <h2 data-translate="userInfo.heading"></h2>
+    <div class="form-group">
+      <input type="text" id="userName" class="form-input" required>
+      <label for="userName" class="form-label" data-translate="userInfo.nameLabel"></label>
+    </div>
+    <div class="form-buttons">
+      <button type="button" class="btn-component form-btn continue" data-translate="userInfo.continueButton"></button>
+    </div>
+    <div class="form-navigation">
+      <button type="button" class="btn-component nav-btn back" data-translate="userInfo.backButton"></button>
+    </div>
+  </form>
+</div>
+
+<div class="contact-us" id="rsvpForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <form id="celebrationForm">
+    <h2 data-translate="rsvp.heading"></h2>
+    <div class="button-group">
+      <button type="button" class="btn-component celebration-btn yes" data-translate="rsvp.yesButton"></button>
+      <button type="button" id="runaway-btn" class="btn-component celebration-btn no" data-translate="rsvp.noButton"></button>
+    </div>
+    <div class="form-navigation">
+      <button type="button" class="btn-component nav-btn back" data-translate="rsvp.backButton"></button>
+    </div>
+  </form>
+</div>
+
+<div class="contact-us" id="attendeesForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <form id="attendeesDetailsForm">
+    <h2 data-translate="attendees.heading"></h2>
+    
+    <div class="form-group">
+      <input type="number" id="attendeesCount" class="form-input" min="1" required>
+      <label for="attendeesCount" class="form-label" data-translate="attendees.inputLabel"></label>
+    </div>
+    
+    <div class="form-buttons">
+      <button type="button" class="btn-component form-btn continue" data-translate="attendees.continueButton"></button>
+    </div>
+    <div class="form-navigation">
+      <button type="button" class="btn-component nav-btn back" data-translate="attendees.backButton"></button>
+    </div>
+  </form>
+</div>
+
+<div class="contact-us" id="detailsForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <form id="rsvpDetailsForm">
+    <h2 data-translate="transport.heading"></h2>
+    
+    <div class="choice-buttons">
+      <button type="button" class="btn-component choice-btn" data-value="both" data-translate-index="transport.options.0"></button>
+      <button type="button" class="btn-component choice-btn" data-value="to" data-translate-index="transport.options.1"></button>
+      <button type="button" class="btn-component choice-btn" data-value="from" data-translate-index="transport.options.2"></button>
+      <button type="button" class="btn-component choice-btn" data-value="none" data-translate-index="transport.options.3"></button>
+    </div>
+    
+    <div class="form-navigation">
+      <button type="button" class="btn-component nav-btn back" data-translate="transport.backButton"></button>
+    </div>
+  </form>
+</div>
+
+<div class="contact-us" id="accommodationForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <form id="accommodationDetailsForm">
+    <h2 data-translate="accommodation.heading"></h2>
+    
+    <div class="choice-buttons">
+      <button type="button" class="btn-component choice-btn" data-value="single" data-translate-index="accommodation.options.0"></button>
+      <button type="button" class="btn-component choice-btn" data-value="double" data-translate-index="accommodation.options.1"></button>
+      <button type="button" class="btn-component choice-btn" data-value="triple" data-translate-index="accommodation.options.2"></button>
+      <button type="button" class="btn-component choice-btn" data-value="none" data-translate-index="accommodation.options.3"></button>
+    </div>
+    
+    <div class="form-navigation">
+      <button type="button" class="btn-component nav-btn back" data-translate="accommodation.backButton"></button>
+    </div>
+  </form>
+</div>
+
+<div class="contact-us" id="foodForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <form id="foodDetailsForm">
+    <h2 data-translate="food.heading"></h2>
+    
+    <div class="choice-buttons two-choices">
+      <button type="button" class="btn-component choice-btn" data-value="meat" data-translate-index="food.options.0"></button>
+      <button type="button" class="btn-component choice-btn" data-value="vege" data-translate-index="food.options.1"></button>
+      <button type="button" class="btn-component choice-btn" data-value="vegan" data-translate-index="food.options.2"></button>
+    </div>
+    
+    <div class="form-navigation">
+      <button type="button" class="btn-component nav-btn back" data-translate="food.backButton"></button>
+    </div>
+  </form>
+</div>
+
+<div class="contact-us" id="allergiesForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <h2 data-translate="allergies.heading"></h2>
+  <div class="form-group">
+    <input type="text" id="allergies" class="form-input" required>
+    <label for="allergies" class="form-label" data-translate="allergies.label"></label>
+  </div>
+  <div class="form-buttons">
+    <button type="button" class="btn-component nav-btn back" data-translate="allergies.backButton"></button>
+    <button type="button" class="btn-component form-btn submit" data-translate="allergies.submitButton"></button>
+  </div>
+</div>
+
+<div class="contact-us" id="thankYouForm" style="display: none;">
+  <div class="wavy-border"></div>
+  <div class="wavy-border-secondary"></div>
+  <div id="thankYouContent">
+    <h2>Thank you!!!</h2>
+  </div>
+</div>
+
+<!-- Submit Modal -->
+<div id="submitModal" class="modal">
+  <div class="modal-content">
+    <h3 data-translate="modal.heading">Submit your response?</h3>
+    <div class="form-buttons">
+      <button type="button" class="btn-component nav-btn back" data-translate="modal.cancelButton">Cancel</button>
+      <button type="button" class="btn-component nav-btn submit" data-translate="modal.confirmButton">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+  
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBX5Ffr1pT-9ItPeTXinyoKv1PSYKDSzP4",
+    authDomain: "max-and-nika-wedding.firebaseapp.com",
+    projectId: "max-and-nika-wedding",
+    storageBucket: "max-and-nika-wedding.firebasestorage.app",
+    messagingSenderId: "790812635080",
+    appId: "1:790812635080:web:fcd8f074b6aff7328cdafd"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Make Firebase available globally
+  window.submitFinalFormData = async function(formData) {
+    try {
+      const docRef = await addDoc(collection(db, "final_responses"), formData);
+      console.log("Response saved with ID: ", docRef.id);
+      // Trigger an extra celebration for successful database storage
+      if (typeof celebrateWithSquiggles === 'function') {
+        setTimeout(() => {
+          celebrateWithSquiggles(10); // Medium amount of squiggles
+        }, 500); // Slight delay after the alert
+      }
+      return true;
+    } catch (e) {
+      console.error("Error saving response: ", e);
+      return false;
+    }
+  };
+</script>
+
 <!-- partial -->
-<script src='https://codepen.io/ste-vg/pen/zBVaZw.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.min.js'></script>
 <script src="./script.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const button = document.getElementById('runaway-btn');
-    const form = document.querySelector('.contact-us');
-    let attempts = 0;
+    // Clear cached form data on page load/reload
+    sessionStorage.removeItem('weddingFormState');
     
+    // Define translations directly in the JavaScript
+    const translations = {
+        "en": {
+            "userInfo": {
+                "heading": "Please introduce yourself!",
+                "nameLabel": "Your first and last name",
+                "continueButton": "Continue",
+                "backButton": "Back"
+            },
+            "rsvp": {
+                "heading": "Are you joining the celebration?",
+                "yesButton": "Yes, can't wait!",
+                "noButton": "Sorry, I can't make it",
+                "backButton": "Back"
+            },
+            "attendees": {
+                "heading": "How many of you will be attending?",
+                "inputLabel": "Number of people",
+                "continueButton": "Continue",
+                "backButton": "Back"
+            },
+            "transport": {
+                "heading": "We have arranged transport so you can celebrate without limitations - should we reserve a spot for you?",
+                "options": [
+                    "Yes, both ways",
+                    "Yes, only to the venue",
+                    "Yes, only from the venue",
+                    "No, I will get there myself"
+                ],
+                "backButton": "Back"
+            },
+            "accommodation": {
+                "heading": "Would you like to use our accommodation?",
+                "options": [
+                    "Yes, I would like a single room",
+                    "Yes, I would like a double room",
+                    "Yes, I would like a triple room",
+                    "No, I prefer my own place"
+                ],
+                "backButton": "Back"
+            },
+            "food": {
+                "heading": "What are your food preferences?",
+                "options": [
+                    "I like meat!",
+                    "Only vegetarian!",
+                    "Completely vegan!"
+                ],
+                "backButton": "Back"
+            },
+            "allergies": {
+                "heading": "Any food allergies or dietary restrictions?",
+                "label": "Allergies/Restrictions",
+                "submitButton": "Submit",
+                "continueButton": "Continue",
+                "backButton": "Back"
+            },
+            "thankYou": {
+                "yes": "Thank you! We look forward to celebrating with you! <3",
+                "no": "Thank you for letting us know. We will miss you!",
+                "backButton": "Back",
+                "submitButton": "Submit form"
+            },
+            "modal": {
+                "heading": "Submit your response?",
+                "confirmButton": "Submit",
+                "cancelButton": "Cancel"
+            }
+        },
+        "pl": {
+            "userInfo": {
+                "heading": "Proszę, przedstaw się",
+                "nameLabel": "Twoje imię i nazwisko",
+                "continueButton": "Dalej",
+                "backButton": "Wstecz"
+            },
+            "rsvp": {
+                "heading": "Czy dołączysz do świętowania?",
+                "yesButton": "Tak, nie mogę się doczekać!",
+                "noButton": "Przepraszam, nie mogę przyjść",
+                "backButton": "Wstecz"
+            },
+            "attendees": {
+                "heading": "Ilu was będzie?",
+                "inputLabel": "Liczba osób",
+                "continueButton": "Dalej",
+                "backButton": "Wróć"
+            },
+            "transport": {
+                "heading": "Zorganizowaliśmy transport, żebyście mogli świętować razem z nami, bez ograniczeń - czy rezerwować dla Ciebie miejsce?",
+                "options": [
+                    "Tak, w obydwie strony",
+                    "Tak, tylko w jedną stronę",
+                    "Tak, tylko z powrotem",
+                    "Nie, dojadę sam/sama"
+                ],
+                "backButton": "Wróć"
+            },
+            "accommodation": {
+                "heading": "Czy chcesz skorzystać z noclegu?",
+                "options": [
+                    "Tak, poproszę pokój 1 os",
+                    "Tak, poproszę pokój 2 os",
+                    "Tak, poproszę pokój 3 os",
+                    "Nie, wolę swój domek"
+                ],
+                "backButton": "Wróć"
+            },
+            "food": {
+                "heading": "Jakie są twoje preferencje co do jedzenia?",
+                "options": [
+                    "Lubię mięso!",
+                    "Tylko wege!",
+                    "Całkowicie wegańskie!"
+                ],
+                "backButton": "Wróć"
+            },
+            "allergies": {
+                "heading": "Czy masz jakieś alergie?",
+                "label": "Alergie/Ograniczenia",
+                "submitButton": "Wyślij",
+                "continueButton": "Dalej",
+                "backButton": "Wstecz"
+            },
+            "thankYou": {
+                "yes": "Dziękujemy! Nie możemy się doczekać świętowania z Tobą!",
+                "no": "Dziękujemy za informację. Będzie nam Ciebie brakować!",
+                "backButton": "Wstecz",
+                "submitButton": "Wyślij formularz"
+            },
+            "modal": {
+                "heading": "Wysłać odpowiedź?",
+                "confirmButton": "Wyślij",
+                "cancelButton": "Anuluj"
+            }
+        },
+        "ua": {
+            "userInfo": {
+                "heading": "Представся, будь ласка",
+                "nameLabel": "Твоє ім'я і прізвище",
+                "continueButton": "Продовжити",
+                "backButton": "Назад"
+            },
+            "rsvp": {
+                "heading": "Чи приєднаєшся до святкування?",
+                "yesButton": "Так, не можу дочекатися!",
+                "noButton": "Вибач, я не зможу прийти",
+                "backButton": "Назад"
+            },
+            "attendees": {
+                "heading": "Скільки вас буде?",
+                "inputLabel": "Кількість осіб",
+                "continueButton": "Продовжити",
+                "backButton": "Назад"
+            },
+            "transport": {
+                "heading": "Ми організували транспорт, щоб ви могли святкувати без обмежень - чи забронювати для вас місце?",
+                "options": [
+                    "Так, в обидві сторони",
+                    "Так, тільки до місця проведення церемонії",
+                    "Так, тільки з місця проведення церемонії",
+                    "Ні, я доїду сам/сама"
+                ],
+                "backButton": "Назад"
+            },
+            "accommodation": {
+                "heading": "Чи скористаєшся кімнатою в готелі?",
+                "options": [
+                    "Так, я хотів би одномісний номер",
+                    "Так, я хотів би двомісний номер",
+                    "Так, я хотів би тримісний номер",
+                    "Ні, я віддаю перевагу своєму місцю"
+                ],
+                "backButton": "Назад"
+            },
+            "food": {
+                "heading": "Які твої харчові вподобання?",
+                "options": [
+                    "Я люблю м'ясо!",
+                    "Тільки вегетаріанське!",
+                    "Цілком веганське!"
+                ],
+                "backButton": "Назад"
+            },
+            "allergies": {
+                "heading": "Чи є у тебе алергія?",
+                "label": "Аллергії/Обмеження",
+                "submitButton": "Відправити",
+                "continueButton": "Далі",
+                "backButton": "Назад"
+            },
+            "thankYou": {
+                "yes": "Дякуємо! Ми з нетерпінням чекаємо на святкування з вами!",
+                "no": "Дякуємо за інформацію. Нам буде вас не вистачати!",
+                "backButton": "Назад",
+                "submitButton": "Надіслати форму"
+            },
+            "modal": {
+                "heading": "Надіслати відповідь?",
+                "confirmButton": "Надіслати",
+                "cancelButton": "Скасувати"
+            }
+        }
+    };
+    
+    // Get translation for a specific key
+    function getTranslation(language, formType, key) {
+        // Default to English if language not found
+        const langData = translations[language] || translations['en'];
+        if (!langData) return '';
+        
+        // Get form data
+        const formData = langData[formType];
+        if (!formData) return '';
+        
+        // Get specific translation
+        return formData[key] || '';
+    }
+    
+    // Get translation for an option in an array
+    function getOptionTranslation(language, formType, index) {
+        // Default to English if language not found
+        const langData = translations[language] || translations['en'];
+        if (!langData) return '';
+        
+        // Get form data
+        const formData = langData[formType];
+        if (!formData || !formData.options || !formData.options[index]) return '';
+        
+        // Get specific option
+        return formData.options[index];
+    }
+    
+    // Apply translations to all elements with data-translate attribute
+    function applyTranslations(language) {
+        if (!language) return;
+        
+        // Apply translations to elements with data-translate attribute
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const translateKey = element.getAttribute('data-translate');
+            const [formType, key] = translateKey.split('.');
+            element.textContent = getTranslation(language, formType, key);
+        });
+        
+        // Apply translations to elements with data-translate-index attribute (for array options)
+        document.querySelectorAll('[data-translate-index]').forEach(element => {
+            const translateKey = element.getAttribute('data-translate-index');
+            const [formType, optionsKey, indexStr] = translateKey.split('.');
+            const index = parseInt(indexStr, 10);
+            element.textContent = getOptionTranslation(language, formType, index);
+        });
+    }
+    
+    // Form state management
+    const formState = {
+        currentStep: 'language',
+        language: null,
+        userName: null,
+        response: null,
+        attendees: null,
+        transport: null,
+        accommodation: null,
+        food: null,
+        allergies: null,
+        
+        // Update state and store in session
+        updateState: function(key, value) {
+            this[key] = value;
+            
+            // If updating language, apply translations
+            if (key === 'language') {
+                applyTranslations(value);
+            }
+            
+            sessionStorage.setItem('weddingFormState', JSON.stringify({
+                language: this.language,
+                userName: this.userName,
+                response: this.response,
+                attendees: this.attendees,
+                transport: this.transport,
+                accommodation: this.accommodation,
+                food: this.food,
+                allergies: this.allergies,
+                currentStep: this.currentStep
+            }));
+        },
+        
+        // Get state from session
+        loadState: function() {
+            const savedState = sessionStorage.getItem('weddingFormState');
+            if (savedState) {
+                const parsedState = JSON.parse(savedState);
+                this.language = parsedState.language || null;
+                this.userName = parsedState.userName || null;
+                this.response = parsedState.response || null;
+                this.attendees = parsedState.attendees || null;
+                this.transport = parsedState.transport || null;
+                this.accommodation = parsedState.accommodation || null;
+                this.food = parsedState.food || null;
+                this.allergies = parsedState.allergies || null;
+                this.currentStep = parsedState.currentStep || 'language';
+            }
+        },
+        
+        // Submit final form data to Firebase
+        submitFinalData: function() {
+            if (this.language && this.response) {
+                window.submitFinalFormData({
+                    language: this.language,
+                    userName: this.userName,
+                    response: this.response,
+                    attendees: this.attendees,
+                    transport: this.transport,
+                    accommodation: this.accommodation,
+                    food: this.food,
+                    allergies: this.allergies,
+                    timestamp: new Date()
+                });
+            }
+        },
+        
+        // Navigate to a specific step
+        goToStep: function(step) {
+            this.updateState('currentStep', step);
+            
+            // Reset button state when going back to language selection
+            if (step === 'language') {
+                resetRunawayButton();
+            }
+            
+            this.showCurrentStep();
+            
+            // Scroll to top on mobile when changing steps
+            if (window.innerWidth <= 768) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        },
+        
+        // Show current step based on state
+        showCurrentStep: function() {
+            document.getElementById('languageForm').style.display = 'none';
+            document.getElementById('userInfoForm').style.display = 'none';
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('attendeesForm').style.display = 'none';
+            document.getElementById('detailsForm').style.display = 'none';
+            document.getElementById('accommodationForm').style.display = 'none';
+            document.getElementById('foodForm').style.display = 'none';
+            document.getElementById('allergiesForm').style.display = 'none';
+            document.getElementById('thankYouForm').style.display = 'none';
+            
+            // Reset all wave animations to ensure they're consistent
+            resetWaveAnimations();
+            
+            switch(this.currentStep) {
+                case 'language':
+                    document.getElementById('languageForm').style.display = 'block';
+                    break;
+                case 'userInfo':
+                    document.getElementById('userInfoForm').style.display = 'block';
+                    updateUserInfoForm(this.language);
+                    populateUserInfoFields();
+                    break;
+                case 'rsvp':
+                    document.getElementById('rsvpForm').style.display = 'block';
+                    updateFormText(this.language);
+                    resetRunawayButton(); // Reset button when showing RSVP form
+                    break;
+                case 'attendees':
+                    document.getElementById('attendeesForm').style.display = 'block';
+                    updateDetailsForm(this.language, 'attendees');
+                    populateAttendeesField();
+                    break;
+                case 'transport':
+                    document.getElementById('detailsForm').style.display = 'block';
+                    updateDetailsForm(this.language, 'transport');
+                    highlightSelectedChoice('transport', this.transport);
+                    break;
+                case 'accommodation':
+                    document.getElementById('accommodationForm').style.display = 'block';
+                    updateDetailsForm(this.language, 'accommodation');
+                    highlightSelectedChoice('accommodation', this.accommodation);
+                    break;
+                case 'food':
+                    document.getElementById('foodForm').style.display = 'block';
+                    updateDetailsForm(this.language, 'food');
+                    highlightSelectedChoice('food', this.food);
+                    break;
+                case 'allergies':
+                    document.getElementById('allergiesForm').style.display = 'block';
+                    updateDetailsForm(this.language, 'allergies');
+                    populateAllergiesField();
+                    break;
+                case 'thankYou':
+                    document.getElementById('thankYouForm').style.display = 'block';
+                    showThankYouMessage(this.language, this.response);
+                    break;
+            }
+        }
+    };
+    
+    // Button component styling utility
+    window.ButtonComponent = {
+        // Update styling for all buttons with btn-component class
+        updateStyle: function(styleProperties) {
+            const buttonStyle = document.createElement('style');
+            let cssText = '';
+            
+            // Create CSS rule from provided properties
+            if (styleProperties) {
+                cssText += '.btn-component {';
+                for (const property in styleProperties) {
+                    cssText += `${property}: ${styleProperties[property]};`;
+                }
+                cssText += '}';
+            }
+            
+            buttonStyle.textContent = cssText;
+            document.head.appendChild(buttonStyle);
+            console.log('Button styles updated:', styleProperties);
+            return buttonStyle;
+        },
+        
+        // Update styling for specific button type
+        updateTypeStyle: function(type, styleProperties) {
+            const buttonTypeStyle = document.createElement('style');
+            let cssText = '';
+            
+            // Create CSS rule from provided properties
+            if (styleProperties) {
+                cssText += `.btn-component.${type} {`;
+                for (const property in styleProperties) {
+                    cssText += `${property}: ${styleProperties[property]};`;
+                }
+                cssText += '}';
+            }
+            
+            buttonTypeStyle.textContent = cssText;
+            document.head.appendChild(buttonTypeStyle);
+            console.log(`Button styles for ${type} updated:`, styleProperties);
+            return buttonTypeStyle;
+        }
+    };
+    
+    // Add a global flag to control animations
+    window.disableSquiggles = false;
+
+    // Modify Thank you message function
+    function showThankYouMessage(language, response) {
+        const thankYouContent = document.getElementById('thankYouContent');
+        
+        // Different messages based on response
+        if (response === 'No') {
+            thankYouContent.innerHTML = `<h2>${getTranslation(language, 'thankYou', 'no')}</h2>`;
+            
+            // Disable squiggle animations only for "No" responses
+            window.disableSquiggles = true;
+            
+            // Attempt to disable the RxJS subscription
+            if (app && app.input) {
+                // Create an empty no-op subscription
+                app.input.moves = {
+                    subscribe: function() { 
+                        return { unsubscribe: function() {} };
+                    },
+                    unsubscribe: function() {}
+                };
+                
+                console.log('Cursor animations disabled on "We will miss you" screen');
+            }
+        } else {
+            thankYouContent.innerHTML = `<h2>${getTranslation(language, 'thankYou', 'yes')}</h2>`;
+            
+            // Make sure squiggles are enabled for the "Thank you" screen
+            window.disableSquiggles = false;
+            
+            console.log('Cursor animations enabled on "Thank you" screen');
+        }
+    }
+
+    // Update celebration function to take optional count parameter and be mobile-aware
+    function celebrateWithSquiggles(count) {
+        // Check if the app is available
+        if (typeof app === 'undefined' || !app) {
+            console.error('Squiggle app not initialized');
+            return;
+        }
+        
+        // Reduce count on mobile to avoid performance issues
+        const isMobile = window.innerWidth <= 768;
+        const squiggleCount = count ? (isMobile ? Math.min(count, 10) : count) : (isMobile ? 8 : 15 + Math.floor(Math.random() * 5));
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+        
+        // Schedule squiggles with slight delay between them
+        for (let i = 0; i < squiggleCount; i++) {
+            setTimeout(() => {
+                // Create random position
+                const randomX = Math.random() * screenWidth;
+                const randomY = Math.random() * screenHeight;
+                
+                // Set fake mouse position for the squiggle function
+                app.lastMousePosition = { x: randomX, y: randomY };
+                
+                // Use the burst method to create multiple squiggles at once
+                app.burst(true);
+            }, i * (isMobile ? 150 : 100)); // Longer delays on mobile for better performance
+        }
+    }
+
+    // Language selection handling
+    const languageButtons = document.querySelectorAll('.language-btn');
+    languageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedLanguage = this.getAttribute('data-lang');
+            formState.updateState('language', selectedLanguage);
+            formState.goToStep('userInfo');
+        });
+    });
+    
+    // User info form handling
+    document.querySelector('#userInfoForm .form-btn.continue').addEventListener('click', function() {
+        const userName = document.getElementById('userName').value.trim();
+        
+        if (userName) {
+            formState.updateState('userName', userName);
+            formState.goToStep('rsvp');
+        } else {
+            // Simple validation - highlight empty field
+            document.getElementById('userName').focus();
+        }
+    });
+    
+    // Back button in user info form
+    document.querySelector('#userInfoForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('language');
+    });
+    
+    // Update form text based on selected language
+    function updateFormText(language) {
+        const celebrationForm = document.getElementById('celebrationForm');
+        const heading = celebrationForm.querySelector('h2');
+        const yesButton = document.querySelector('.celebration-btn.yes');
+        const noButton = document.getElementById('runaway-btn');
+        const backButton = document.querySelector('#rsvpForm .nav-btn.back');
+        
+        // Update text from translations
+        heading.textContent = getTranslation(language, 'rsvp', 'heading');
+        yesButton.textContent = getTranslation(language, 'rsvp', 'yesButton');
+        noButton.textContent = getTranslation(language, 'rsvp', 'noButton');
+        backButton.textContent = getTranslation(language, 'rsvp', 'backButton');
+    }
+    window.updateFormText = updateFormText;
+    
+    // Navigation button event listeners
+    document.querySelector('#rsvpForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('userInfo');
+    });
+    
+    // Runaway button functionality
+    const button = document.getElementById('runaway-btn');
+    const yesButton = document.querySelector('.celebration-btn.yes');
+    const form = document.querySelector('#rsvpForm');
+    let attempts = 0;
+    let isMoving = false; // Flag to prevent multiple triggers
+    let isMobile = window.innerWidth <= 768; // Check if we're on mobile
+
+    // Apply minimum width to runaway button
+    button.style.minWidth = isMobile ? '100%' : '180px';
+
+    // Update mobile detection on resize
+    window.addEventListener('resize', function() {
+        isMobile = window.innerWidth <= 768;
+        button.style.minWidth = isMobile ? '100%' : '180px';
+    });
+
+    // Function to reset the runaway button state
+    function resetRunawayButton() {
+        // Reset position and styling
+        button.style.left = '';
+        button.style.top = '';
+        button.style.position = '';
+        button.classList.remove('running');
+        
+        // Reset counters
+        attempts = 0;
+        isMoving = false;
+        
+        // Reset event listeners
+        button.removeEventListener('mouseover', moveButton);
+        button.removeEventListener('touchstart', moveButton);
+        
+        // On mobile, use touchstart instead of mouseover
+        if (isMobile) {
+            button.addEventListener('touchstart', moveButton);
+        } else {
+            button.addEventListener('mouseover', moveButton);
+        }
+        
+        // Reset yes button position
+        yesButton.style.position = '';
+        yesButton.style.left = '';
+    }
+
     function getRandomPosition() {
         const buttonRect = button.getBoundingClientRect();
         const formRect = form.getBoundingClientRect();
@@ -43,9 +834,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxX = formRect.width - buttonRect.width - padding;
         const maxY = formRect.height - buttonRect.height - padding;
         
-        // Generate random positions with much wider range
-        const randomX = (Math.random() - 0.5) * maxX * 1.5; // 1.5x wider range
-        const randomY = (Math.random() - 0.5) * maxY * 1.5; // 1.5x wider range
+        // Generate random positions with minimum movement distance
+        let randomX = (Math.random() - 0.5) * maxX * 4.0;
+        let randomY = (Math.random() - 0.5) * maxY * 4.0;
+        
+        // Ensure minimum movement distance (at least 30% of max)
+        const minDistance = 0.3;
+        if (Math.abs(randomX) < maxX * minDistance) {
+            randomX = (randomX < 0 ? -1 : 1) * maxX * minDistance;
+        }
+        if (Math.abs(randomY) < maxY * minDistance) {
+            randomY = (randomY < 0 ? -1 : 1) * maxY * minDistance;
+        }
         
         // Ensure button stays within form boundaries
         return {
@@ -54,18 +854,398 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    function moveButton() {
-        if (attempts < 3) {
-            button.classList.add('running');
+    function moveButton(e) {
+        // Prevent default behavior for touch events
+        if (e && e.type === 'touchstart') {
+            e.preventDefault();
+        }
+        
+        if (attempts < 4 && !isMoving) { // Check if not already moving
+            isMoving = true; // Lock movement
             const pos = getRandomPosition();
+            button.classList.add('running');
+            
+            // Ensure button is set to absolute positioning for movement
+            button.style.position = 'absolute';
+            
+            // When the blue button moves, make sure the orange button stays in position
+            yesButton.style.position = 'absolute';
+            yesButton.style.left = isMobile ? '0' : '25%';
+            
+            // Move only the blue button
             button.style.left = `${pos.x}px`;
             button.style.top = `${pos.y}px`;
             attempts++;
+            
+            // Allow new movements after transition completes (100ms)
+            setTimeout(function() {
+                isMoving = false;
+            }, 100);
+            
+            // After 4 attempts, remove event listeners so button stops running away
+            if (attempts >= 4) {
+                button.removeEventListener('mouseover', moveButton);
+                button.removeEventListener('touchstart', moveButton);
+                // Keep the click listener for submission
+            }
+        }
+    }
+    
+    // Yes button click handler
+    yesButton.addEventListener('click', function() {
+        // Save "Yes" response and go to attendees form
+        formState.updateState('response', 'Yes');
+        
+        // Quick celebration with squiggles 
+        celebrateWithSquiggles(5); // Fewer squiggles than after form submission
+        
+        // Continue to next form
+        setTimeout(() => {
+            formState.goToStep('attendees');
+        }, 800); // Give time for the celebration
+    });
+    
+    // No button click handler (separate from moveButton)
+    button.addEventListener('click', function(e) {
+        if (attempts >= 4) {
+            // Only submit after it's stopped running away
+            formState.updateState('response', 'No');
+            formState.goToStep('thankYou');
+        } else {
+            // Otherwise run away
+            moveButton(e);
+        }
+    });
+
+    // Set appropriate event listener based on device type
+    if (isMobile) {
+        button.addEventListener('touchstart', moveButton);
+    } else {
+        button.addEventListener('mouseover', moveButton);
+    }
+
+    // Function to restart wave animations
+    function resetWaveAnimations() {
+        const allWavyBorders = document.querySelectorAll('.wavy-border, .wavy-border-secondary');
+        
+        // Completely remove and recreate the wavy borders for each form
+        allWavyBorders.forEach(border => {
+            const parent = border.parentElement;
+            const isSecondary = border.classList.contains('wavy-border-secondary');
+            const newBorder = document.createElement('div');
+            
+            // Apply the appropriate class
+            if (isSecondary) {
+                newBorder.className = 'wavy-border-secondary';
+            } else {
+                newBorder.className = 'wavy-border';
+            }
+            
+            // Remove the old border and add the new one
+            parent.removeChild(border);
+            
+            // Force browser to process the removal before adding
+            void parent.offsetWidth;
+            
+            // Add the new border element
+            parent.prepend(newBorder);
+        });
+        
+        // Force a layout reflow on the entire document
+        void document.documentElement.offsetHeight;
+    }
+
+    // Function to update the user info form text based on language
+    function updateUserInfoForm(language) {
+        const nameForm = document.getElementById('nameForm');
+        const heading = nameForm.querySelector('h2');
+        const userNameLabel = document.querySelector('label[for="userName"]');
+        const continueButton = nameForm.querySelector('.form-btn.continue');
+        const backButton = nameForm.querySelector('.nav-btn.back');
+        
+        // Update text from translations
+        heading.textContent = getTranslation(language, 'userInfo', 'heading');
+        userNameLabel.textContent = getTranslation(language, 'userInfo', 'nameLabel');
+        continueButton.textContent = getTranslation(language, 'userInfo', 'continueButton');
+        backButton.textContent = getTranslation(language, 'userInfo', 'backButton');
+    }
+    
+    // Function to populate user info fields with saved data
+    function populateUserInfoFields() {
+        if (formState.userName) {
+            document.getElementById('userName').value = formState.userName;
+            // Trigger the label animation
+            document.getElementById('userName').classList.add('has-value');
         }
     }
 
-    button.addEventListener('mouseover', moveButton);
-    button.addEventListener('click', moveButton);
+    // Function to update details form based on language and current form
+    function updateDetailsForm(language, formType) {
+        const formSelectors = {
+            'attendees': {
+                form: document.getElementById('attendeesDetailsForm'),
+                heading: document.querySelector('#attendeesForm h2'),
+                inputLabel: document.querySelector('#attendeesForm label[for="attendeesCount"]'),
+                continueButton: document.querySelector('#attendeesForm .form-btn.continue'),
+                backButton: document.querySelector('#attendeesForm .nav-btn.back')
+            },
+            'transport': {
+                form: document.getElementById('rsvpDetailsForm'),
+                heading: document.querySelector('#detailsForm h2'),
+                buttons: document.querySelectorAll('#detailsForm .choice-btn'),
+                backButton: document.querySelector('#detailsForm .nav-btn.back')
+            },
+            'accommodation': {
+                form: document.getElementById('accommodationDetailsForm'),
+                heading: document.querySelector('#accommodationForm h2'),
+                buttons: document.querySelectorAll('#accommodationForm .choice-btn'),
+                backButton: document.querySelector('#accommodationForm .nav-btn.back')
+            },
+            'food': {
+                form: document.getElementById('foodDetailsForm'),
+                heading: document.querySelector('#foodForm h2'),
+                buttons: document.querySelectorAll('#foodForm .choice-btn'),
+                backButton: document.querySelector('#foodForm .nav-btn.back')
+            },
+            'allergies': {
+                form: document.getElementById('allergiesDetailsForm'),
+                heading: document.querySelector('#allergiesForm h2'),
+                allergiesLabel: document.querySelector('label[for="allergies"]'),
+                submitButton: document.querySelector('#allergiesForm .form-btn.submit'),
+                backButton: document.querySelector('#allergiesForm .nav-btn.back')
+            }
+        };
+        
+        const selectors = formSelectors[formType];
+        if (!selectors) return;
+        
+        // Update text from translations
+        if (selectors.heading) {
+            selectors.heading.textContent = getTranslation(language, formType, 'heading');
+        }
+        
+        if (selectors.backButton) {
+            selectors.backButton.textContent = getTranslation(language, formType, 'backButton');
+        }
+        
+        // For forms with option buttons
+        if (selectors.buttons) {
+            selectors.buttons.forEach((button, index) => {
+                button.textContent = getOptionTranslation(language, formType, index);
+            });
+        }
+        
+        // For attendees form
+        if (formType === 'attendees') {
+            selectors.inputLabel.textContent = getTranslation(language, 'attendees', 'inputLabel');
+            selectors.continueButton.textContent = getTranslation(language, 'attendees', 'continueButton');
+        }
+        
+        // For allergies form
+        if (formType === 'allergies') {
+            selectors.allergiesLabel.textContent = getTranslation(language, 'allergies', 'label');
+            selectors.submitButton.textContent = getTranslation(language, 'allergies', 'submitButton');
+        }
+    }
+    
+    // Function to populate attendees field
+    function populateAttendeesField() {
+        if (formState.attendees) {
+            document.getElementById('attendeesCount').value = formState.attendees;
+            document.getElementById('attendeesCount').classList.add('has-value');
+        }
+    }
+    
+    // Helper function to populate allergies field
+    function populateAllergiesField() {
+        if (formState.allergies) {
+            document.getElementById('allergies').value = formState.allergies;
+            document.getElementById('allergies').classList.add('has-value');
+        }
+    }
+    
+    // Helper function to highlight selected choice
+    function highlightSelectedChoice(formType, selectedValue) {
+        if (!selectedValue) return;
+        
+        let formSelector;
+        if (formType === 'attendees') formSelector = '#attendeesForm';
+        else if (formType === 'transport') formSelector = '#detailsForm';
+        else if (formType === 'accommodation') formSelector = '#accommodationForm';
+        else if (formType === 'food') formSelector = '#foodForm';
+        else return;
+        
+        const buttons = document.querySelectorAll(`${formSelector} .choice-btn`);
+        buttons.forEach(button => {
+            if (button.getAttribute('data-value') === selectedValue) {
+                button.classList.add('selected');
+            } else {
+                button.classList.remove('selected');
+            }
+        });
+    }
+    
+    // Event handler for attendees form
+    document.querySelector('#attendeesForm .form-btn.continue').addEventListener('click', function() {
+        const attendeesCount = document.getElementById('attendeesCount').value.trim();
+        
+        if (attendeesCount && parseInt(attendeesCount) > 0) {
+            formState.updateState('attendees', attendeesCount);
+            formState.goToStep('transport');
+        } else {
+            // Simple validation - highlight empty field or invalid value
+            document.getElementById('attendeesCount').focus();
+        }
+    });
+    
+    // Event handler for transport form choice buttons
+    document.querySelectorAll('#detailsForm .choice-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const value = this.getAttribute('data-value');
+            formState.updateState('transport', value);
+            
+            // Highlight selected button
+            document.querySelectorAll('#detailsForm .choice-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            this.classList.add('selected');
+            
+            // Go to next step
+            setTimeout(() => {
+                formState.goToStep('accommodation');
+            }, 500);
+        });
+    });
+    
+    // Event handler for accommodation form choice buttons
+    document.querySelectorAll('#accommodationForm .choice-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const value = this.getAttribute('data-value');
+            formState.updateState('accommodation', value);
+            
+            // Highlight selected button
+            document.querySelectorAll('#accommodationForm .choice-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            this.classList.add('selected');
+            
+            // Go to next step
+            setTimeout(() => {
+                formState.goToStep('food');
+            }, 500);
+        });
+    });
+    
+    // Event handler for food form choice buttons
+    document.querySelectorAll('#foodForm .choice-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const value = this.getAttribute('data-value');
+            formState.updateState('food', value);
+            
+            // Highlight selected button
+            document.querySelectorAll('#foodForm .choice-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            this.classList.add('selected');
+            
+            // Go to next step
+            setTimeout(() => {
+                formState.goToStep('allergies');
+            }, 500);
+        });
+    });
+    
+    // Back button for attendees form
+    document.querySelector('#attendeesForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('rsvp');
+    });
+    
+    // Back button for transport form
+    document.querySelector('#detailsForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('attendees');
+    });
+    
+    // Back button for accommodation form
+    document.querySelector('#accommodationForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('transport');
+    });
+    
+    // Back button for food form
+    document.querySelector('#foodForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('accommodation');
+    });
+    
+    // Back button for allergies form
+    document.querySelector('#allergiesForm .nav-btn.back').addEventListener('click', function() {
+        formState.goToStep('food');
+    });
+    
+    // Update the event handler for the allergies form
+    document.querySelector('#allergiesForm .form-btn.submit').addEventListener('click', function() {
+        // Save allergies to form state
+        const allergiesValue = document.getElementById('allergies').value;
+        formState.updateState('allergies', allergiesValue);
+            
+        // Show the submit modal instead of navigating directly
+        showSubmitModal();
+    });
+    
+    // Initialize form state function
+    function initializeFormState() {
+        // Load saved state on page load
+        formState.loadState();
+        
+        // Apply initial translations
+        applyTranslations(formState.language);
+        
+        // Show the current step
+        formState.showCurrentStep();
+    }
+    
+    // Initialize form state
+    initializeFormState();
+
+    // Add modal functionality
+    function showSubmitModal() {
+        const modal = document.getElementById('submitModal');
+        modal.classList.add('show');
+        
+        // Apply translations to modal buttons
+        const cancelButton = modal.querySelector('.nav-btn.back');
+        const submitButton = modal.querySelector('.nav-btn.submit');
+        const modalHeading = modal.querySelector('h3');
+        
+        if (modalHeading) {
+            modalHeading.textContent = getTranslation(formState.language, 'modal', 'heading');
+        }
+        
+        if (cancelButton) {
+            cancelButton.textContent = getTranslation(formState.language, 'modal', 'cancelButton');
+            cancelButton.addEventListener('click', function() {
+                // Hide the modal
+                modal.classList.remove('show');
+            });
+        }
+        
+        if (submitButton) {
+            submitButton.textContent = getTranslation(formState.language, 'modal', 'confirmButton');
+            submitButton.addEventListener('click', function() {
+                // Submit the data to Firebase
+                formState.submitFinalData();
+                
+                // Hide the modal
+                modal.classList.remove('show');
+                
+                // Only trigger squiggles for "Yes" responses
+                if (formState.response === 'Yes') {
+                    celebrateWithSquiggles(20);
+                }
+                
+                // Show the thank you page
+                formState.goToStep('thankYou');
+            });
+        }
+    }
 });
 </script>
 

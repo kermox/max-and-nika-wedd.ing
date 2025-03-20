@@ -109,16 +109,23 @@ class App {
         this.tick();
         let input = new Input(this.container);
         input.moves.subscribe((position) => {
+            if (window.disableSquiggles) return;
+            
             for (let i = 0; i < 3; i++)
                 this.createSqwigFromMouse(position);
         });
         input.starts.subscribe((position) => this.lastMousePosition = position);
-        input.ends.subscribe((position) => this.burst(true));
+        input.ends.subscribe((position) => {
+            if (window.disableSquiggles) return;
+            this.burst(true);
+        });
         if (location.pathname.match(/fullcpgrid/i))
             setInterval(() => this.burst(false), 1000);
         Rx.Observable.fromEvent(window, "resize").subscribe(() => this.onResize());
     }
     burst(fromMouse = false) {
+        if (window.disableSquiggles) return;
+        
         for (let i = 0; i < 5; i++)
             this.createRandomSqwig(fromMouse);
     }
